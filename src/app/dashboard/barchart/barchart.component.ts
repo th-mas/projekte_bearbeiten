@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarchartComponent implements OnInit {
 
+ // mit plotly erstellt Quelle: https://www.npmjs.com/package/angular-plotly.js/v/0.1.13
 
   public graph = {
 
@@ -15,7 +16,7 @@ export class BarchartComponent implements OnInit {
 
           { x: [1, 2, 3], y: [2, 5, 3], type: 'bar' },
       ],
-      layout: {width: 320, height: 240, title: 'A Fancy Plot'}
+      layout: {width: 320, height: 240, title: 'Projekte Übersicht'}
     };
 
 

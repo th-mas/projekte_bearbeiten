@@ -30,19 +30,24 @@
           <button class="btn btn-success">Neues Projekt</button>
         </div>
       </div>
-      <div class="col-xs-12">
-        <a href="#" class="list-group-item clearfix"></a>
-          <div class="pull-left">
-            <h4 class="list-group-item-heading">ID</h4>
-            <p class="list-group-item-text"></p>
-            <h4 class="list-group-item-heading">Name</h4>
-            <p class="list-group-item-text"></p>
-            <h4 class="list-group-item-heading">Anschrift</h4>
-            <p class="list-group-item-text"></p>
-            <h4 class="list-group-item-heading">Holzart</h4>
-            <p class="list-group-item-text"></p>
-          </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <a
+          href="#"
+          class="list-group-item clearfix"
+          *ngFor="let proj of projekte ">
+            <div class="pull-left">
+              <h4 class="list-group-item-heading">{{proj.name}}</h4>
+              <p class="list-group-item-text">{{proj.id}}</p>
+              <p class="list-group-item-text">{{proj.kunde}}</p>
+              <p class="list-group-item-text">{{proj.holzart}}</p>
+              <p class="list-group-item-text">{{proj.fraechter}}</p>
+              <p class="list-group-item-text">{{proj.schaetzmeter}}</p>
+              <p class="list-group-item-text">{{proj.preis}}</p>
 
+
+            </div>
+          </a>
       </div>
   </div>
 </div>
