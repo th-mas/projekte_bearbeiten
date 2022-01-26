@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import {APP_ROUTES} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ProjektListComponent } from './projekt-list/projekt-list.component';
@@ -11,7 +11,6 @@ import { ProjektSucheComponent } from './projekt-suche/projekt-suche.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LinechartComponent } from './dashboard/linechart/linechart.component';
 import { BarchartComponent } from './dashboard/barchart/barchart.component';
-import { PlotlyModule } from 'angular-plotly.js';
 import { CommonModule } from '@angular/common';
 
 
@@ -27,19 +26,11 @@ import { CommonModule } from '@angular/common';
     DashboardComponent,
     LinechartComponent,
     BarchartComponent
-
-
-
   ],
   imports: [
-    BrowserModule, PlotlyModule, CommonModule,
-    AppRoutingModule,
-        RouterModule.forRoot([
-        {path: 'projekte', component: ProjektListComponent},
-        {path: 'landing', component: LandingpageComponent},
-        {path: 'dash', component: DashboardComponent},
-
-  ])
+    BrowserModule,
+    CommonModule,
+    RouterModule.forRoot(APP_ROUTES)
 ],
 providers: [],
 bootstrap: [AppComponent]
