@@ -12,7 +12,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LinechartComponent } from './dashboard/linechart/linechart.component';
 import { BarchartComponent } from './dashboard/barchart/barchart.component';
 import { CommonModule } from '@angular/common';
-
+import { ProjektHinzuComponent } from './projekt-list/projekt-hinzu/projekt-hinzu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 
@@ -25,12 +27,14 @@ import { CommonModule } from '@angular/common';
     ProjektSucheComponent,
     DashboardComponent,
     LinechartComponent,
-    BarchartComponent
+    BarchartComponent,
+    ProjektHinzuComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, //FormBuilder,FormGroup,Validators,
     CommonModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    BrowserAnimationsModule
 ],
 providers: [],
 bootstrap: [AppComponent]
