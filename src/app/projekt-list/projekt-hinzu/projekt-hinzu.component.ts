@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import {item} from '../../entities/projekt';
 
 @Component({
