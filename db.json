@@ -1,0 +1,40 @@
+{
+  "time-tracking": [
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 29
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 1
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 29
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 2
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 30
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 3
+    }
+  ]
+}

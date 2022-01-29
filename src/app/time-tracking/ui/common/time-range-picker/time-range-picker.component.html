@@ -1,0 +1,5 @@
+<div>
+  <label for="from">From: </label>
+  <input class="custom-select my-1 mr-sm-2" id="from" type="time" [(ngModel)]="fromTime"  (ngModelChange)="onFromChange($event)"> - <label for="to">To: </label><input id="to" type="time" [(ngModel)]="toTime"  (ngModelChange)="onToChange($event)">
+  <label>Duration: {{this.duration}}</label>
+</div>
