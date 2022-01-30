@@ -3,66 +3,6 @@
     {
       "date": {
         "year": 2022,
-        "month": 1,
-        "day": 29
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "admin",
-      "type": "REGULAR_WORK",
-      "id": 1
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 29
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "admin",
-      "type": "REGULAR_WORK",
-      "id": 2
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 30
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "admin",
-      "type": "REGULAR_WORK",
-      "id": 3
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 21
-      },
-      "fromTime": "11:00",
-      "toTime": "16:12",
-      "userId": "admin",
-      "type": "REGULAR_WORK",
-      "id": 4
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 29
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "admin",
-      "type": "REGULAR_WORK",
-      "id": 5
-    },
-    {
-      "date": {
-        "year": 2022,
         "month": 2,
         "day": 14
       },
@@ -71,6 +11,126 @@
       "userId": "500459",
       "type": "REGULAR_WORK",
       "id": 6
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 7
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 8
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 9
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 10
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 11
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 12
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 13
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 14
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 15
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:59",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 16
     }
   ],
   "users": [
@@ -89,31 +149,86 @@
   ],
   "groups": [
     {
-      "groupe_name": "basic",
+      "groupe_name": "tewfewf",
       "users": [
-        "admin",
-        "Saban"
-      ]
+        {
+          "user_name": "fwefwe",
+          "access_level": 0
+        },
+        {
+          "user_name": "fwef",
+          "access_level": 0
+        },
+        {
+          "user_name": "wef",
+          "access_level": 0
+        },
+        {
+          "user_name": "w",
+          "access_level": 0
+        }
+      ],
+      "id": 1
     },
     {
-      "groupe_name": "not so basic",
+      "groupe_name": "wef",
       "users": [
-        "admin",
-        "Haso"
-      ]
+        {
+          "user_name": "we",
+          "access_level": 0
+        },
+        {
+          "user_name": "w",
+          "access_level": 0
+        }
+      ],
+      "id": 2
     },
     {
-      "groupe_name": "really not basic",
+      "groupe_name": "wef",
       "users": [
-        "admin",
-        "Mujo"
-      ]
+        {
+          "user_name": "",
+          "access_level": 0
+        },
+        {
+          "user_name": "",
+          "access_level": 0
+        },
+        {
+          "user_name": "",
+          "access_level": 0
+        },
+        {
+          "user_name": "",
+          "access_level": 0
+        },
+        {
+          "user_name": "",
+          "access_level": 0
+        }
+      ],
+      "id": 3
     },
     {
-      "groupe_name": "admin",
+      "groupe_name": "a",
       "users": [
-        "admin"
-      ]
+        {
+          "user_name": "wefwef",
+          "access_level": 0
+        }
+      ],
+      "id": 4
+    },
+    {
+      "groupe_name": "wefwef",
+      "users": [
+        {
+          "user_name": "wefwef",
+          "access_level": 0
+        }
+      ],
+      "id": 5
     }
   ]
 }

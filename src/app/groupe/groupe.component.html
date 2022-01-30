@@ -1,50 +1,79 @@
 <div class="card">
-    <div class="header">
-        <h2 class="title">Group Search</h2>
-    </div>
+  <div class="header">
+    <h2 class="title">Group Search</h2>
+  </div>
 
-    <div class="content">
-        <form>
-            <div class="form-group">
-                <label>Groupe Name:</label>
-                <input [(ngModel)]="groupe_name" name="groupe_name" class="form-control" />
-            </div>
-            <div class="form-group">
-                <button [disabled]="!groupe_name" (click)="search_group()" class="btn btn-default">
-                    Search
-                </button>
-            </div>
-        </form>
-    </div>
+  <div class="content">
+    <form>
+      <div class="form-group">
+        <label>Groupe Name:</label>
+        <input [(ngModel)]="groupe_name" (ngModelChange)="groupe_name_changed($event)" name="groupe_name"
+          class="form-control" [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+      <div class="form-group">
+        <button [disabled]="!groupe_name" (click)="search_group()" class="btn btn-default">
+          Search
+        </button>
+      </div>
+
+    </form>
+  </div>
 </div>
 
 <div class="card">
-    <table class="table table-condensed" *ngIf="groups.length > 0">
-        <thead>
-            <tr>
-                <th>Group Name</th>
-                <th>Users</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let f of groups" [class.active]="f === selectedGroup">
-                <td>{{ f.groupe_name }}</td>
-                <td>{{ f.users }}</td>
+  <table class="table table-condensed" *ngIf="groups.length > 0">
+    <thead>
+      <tr>
+        <th>Group Name</th>
+        <th>Users</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of groups" [class.active]="f === selectedGroup">
+        <td>{{ f.groupe_name }}</td>
+        <td>{{ f.users | usersToString }}</td>
+        <td>
+          <a (click)="select(f)">Select</a>
+        </td>
+        <td>
+          <a (click)="delete(f)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-                <td>
-                    <a (click)="select(f)">Select</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="content">
+  <form>
+    <div class="form-group">
+      <label>Create Group:</label>
+      <input [(ngModel)]="groupe_name" (ngModelChange)="groupe_name_changed($event)" name="groupe_name">
+    </div>
+    <div class="form-group">
+      <label>User names:</label>
+      <input [(ngModel)]="group_users_string" name="group_users_string">
+    </div>
+    <div class="form-group">
+      <button [disabled]="!groupe_name" (click)="save()" class="btn btn-default">
+        Create
+      </button>
+    </div>
+
+  </form>
 </div>
 
 <div class="card" *ngIf="selectedGroup">
-    <div class="content">
-        <pre>{{ selectedGroup | json }}</pre>
-    </div>
+  <div class="content">
+    <pre>{{ selectedGroup | json }}</pre>
+  </div>
 </div>
+
 
 
 
