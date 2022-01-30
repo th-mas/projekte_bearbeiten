@@ -14,6 +14,7 @@ import { BarchartComponent } from './dashboard/barchart/barchart.component';
 import { CommonModule } from '@angular/common';
 import { ProjektHinzuComponent } from './projekt-list/projekt-hinzu/projekt-hinzu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjektDeleteComponent } from './app/projekt-list/projekt-delete/projekt-delete.component';
 //import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardComponent,
     LinechartComponent,
     BarchartComponent,
-    ProjektHinzuComponent
+    ProjektHinzuComponent,
+    ProjektDeleteComponent
   ],
   imports: [
     BrowserModule, //FormBuilder,FormGroup,Validators,
