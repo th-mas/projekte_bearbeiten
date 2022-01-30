@@ -20,6 +20,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {AngularMaterialModule} from './angular-material.module';
 import {IdentifyModule} from "./identify/identify.module";
 import {SorryModule} from "./sorry/sorry.module";
+import { UsersToStringPipe } from './groupe/pipe/users-to-string.pipe';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {SorryModule} from "./sorry/sorry.module";
     UserComponent,
     GroupeComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
+    UsersToStringPipe
   ],
   imports: [
     BrowserModule,
