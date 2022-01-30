@@ -13,8 +13,14 @@ import { LinechartComponent } from './dashboard/linechart/linechart.component';
 import { BarchartComponent } from './dashboard/barchart/barchart.component';
 import { CommonModule } from '@angular/common';
 import { ProjektHinzuComponent } from './projekt-list/projekt-hinzu/projekt-hinzu.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProjektDeleteComponent } from './app/projekt-list/projekt-delete/projekt-delete.component';
+import { FormsModule } from "@angular/forms";
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { PlotlyModule } from 'angular-plotly.js';
+import { ProjektDeleteComponent } from './projekt-list/projekt-delete/projekt-delete.component';
+
+
+
 //import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
@@ -33,10 +39,9 @@ import { ProjektDeleteComponent } from './app/projekt-list/projekt-delete/projek
     ProjektDeleteComponent
   ],
   imports: [
-    BrowserModule, //FormBuilder,FormGroup,Validators,
+    BrowserModule, FormsModule,MatButtonModule,MatCardModule, PlotlyModule, //FormBuilder,FormGroup,Validators,
     CommonModule,
-    RouterModule.forRoot(APP_ROUTES),
-    BrowserAnimationsModule
+    RouterModule.forRoot(APP_ROUTES)
 ],
 providers: [],
 bootstrap: [AppComponent]
