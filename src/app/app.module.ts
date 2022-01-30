@@ -20,8 +20,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {AngularMaterialModule} from './angular-material.module';
 import {IdentifyModule} from "./identify/identify.module";
 import {SorryModule} from "./sorry/sorry.module";
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+
 
 //import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
