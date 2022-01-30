@@ -17,6 +17,11 @@ import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 
 import { ProjektDeleteComponent } from './projekt-list/projekt-delete/projekt-delete.component';
+import { AngularMaterialModule } from './angular-material.module';
+import { IdentifyModule } from './identify/identify.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SorryModule } from './sorry/sorry.module';
+import { TimeTrackingModule } from './time-tracking/time-tracking.module';
 
 
 
@@ -32,21 +37,17 @@ import { ProjektDeleteComponent } from './projekt-list/projekt-delete/projekt-de
     LandingpageComponent,
     ProjektSucheComponent,
     DashboardComponent,
-    GroupeComponent,
-    UserComponent,
-    GroupeComponent,
-    LogInComponent,
-    RegisterComponent
+    ProjektHinzuComponent,
+    ProjektDeleteComponent
   ],
   imports: [
-    BrowserModule,   //FormBuilder,FormGroup,Validators,
+    BrowserModule, FormsModule,MatButtonModule,MatCardModule,  //FormBuilder,FormGroup,Validators,
     CommonModule,
     RouterModule.forRoot(APP_ROUTES),
     BrowserAnimationsModule,
     TimeTrackingModule,
     IdentifyModule,
     SorryModule,
-
     FormsModule,
     AngularMaterialModule,
     ReactiveFormsModule
