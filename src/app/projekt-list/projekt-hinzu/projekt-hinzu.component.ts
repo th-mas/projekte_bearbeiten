@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { ProjektDeleteComponent } from '../projekt-delete/projekt-delete.component';
 import {item} from '../../entities/projekt';
 
 @Component({
@@ -41,6 +42,8 @@ export class ProjektHinzuComponent implements OnInit {
 
     const newProj:any = new item(this.ident,ingBearb,ingName,ingKunde,ingholz,ingfr,ingschaetz,ingpreis);
     this.hinzufuegen.emit(newProj);
+
+
   }
 
 }

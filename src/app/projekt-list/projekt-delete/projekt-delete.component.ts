@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {projekte} from "../projekt-list.component"
 
-import { ProjektListComponent } from '../projekt-list.component';
 
 @Component({
   selector: 'app-projekt-delete',
@@ -9,11 +9,11 @@ import { ProjektListComponent } from '../projekt-list.component';
 })
 export class ProjektDeleteComponent implements OnInit {
 
-  @Input() projekte
+  @Input() projekte : any[] = []
 
 
   removeItem(i:number): void{
-    ProjektListComponent.projekte.splice(i,1)}
+    projekte.splice(i,1)}
 
 
 

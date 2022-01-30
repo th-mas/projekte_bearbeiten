@@ -20,6 +20,8 @@ import {RegisterComponent} from './components/register/register.component';
 import {AngularMaterialModule} from './angular-material.module';
 import {IdentifyModule} from "./identify/identify.module";
 import {SorryModule} from "./sorry/sorry.module";
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 //import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -40,14 +42,14 @@ import {SorryModule} from "./sorry/sorry.module";
     RegisterComponent
   ],
   imports: [
-    BrowserModule, FormsModule,MatButtonModule,MatCardModule, PlotlyModule, //FormBuilder,FormGroup,Validators,
+    BrowserModule,   //FormBuilder,FormGroup,Validators,
     CommonModule,
     RouterModule.forRoot(APP_ROUTES),
     BrowserAnimationsModule,
     TimeTrackingModule,
     IdentifyModule,
     SorryModule,
-    TimeTrackingModule,
+
     FormsModule,
     AngularMaterialModule,
     ReactiveFormsModule

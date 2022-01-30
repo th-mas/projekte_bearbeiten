@@ -9,7 +9,6 @@ import { item } from '../entities/projekt';
 })
 export class ProjektSucheComponent implements OnInit {
 
-  id: number = Date.now();
   name: string = "";
   kunde: string = "";
   holzart: string= "";
