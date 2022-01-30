@@ -1,4 +1,24 @@
-<div class="card">
+<form class="my-3" style="width: 200px;">
+  <div class="form-group">
+    <label for="exampleInputGroup1">Group Name</label>
+    <input [(ngModel)]="groupe_name" (ngModelChange)="groupe_name_changed($event)" name="groupe_name"
+      class="form-control" [matAutocomplete]="auto" placeholder="Groupe Name" />
+    <small id="groupHelp" class="form-text text-muted">Just do it!</small>
+  </div>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options | async" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  <div class="form-group" class="my-3" style="width: 200px;">
+    <button [disabled]="!groupe_name" (click)="search_group()" class="btn btn-primary">
+      Search
+    </button>
+  </div>
+</form>
+
+
+<!-- <div class="card">
   <div class="header">
     <h2 class="title">Group Search</h2>
   </div>
@@ -23,7 +43,7 @@
 
     </form>
   </div>
-</div>
+</div> -->
 
 <div class="card">
   <table class="table table-condensed" *ngIf="groups.length > 0">
@@ -56,18 +76,42 @@
   </table>
 </div>
 
+<!-- <form class="my-3" style="width: 200px;">
+  <div class="form-group">
+    <label for="exampleInputGroup1">Group Name</label>
+    <input [(ngModel)]="groupe_name" (ngModelChange)="groupe_name_changed($event)" name="groupe_name"
+      class="form-control" [matAutocomplete]="auto" placeholder="Groupe Name" />
+    <small id="groupHelp" class="form-text text-muted">Just do it!</small>
+  </div>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options | async" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  <div class="form-group" class="my-3" style="width: 200px;">
+    <button [disabled]="!groupe_name" (click)="search_group()" class="btn btn-primary">
+      Search
+    </button>
+  </div>
+</form> -->
+
 <div class="content">
-  <form>
+  <form class="my-3" style="width: 200px;">
     <div class="form-group">
-      <label>Create Group:</label>
-      <input [(ngModel)]="groupe_name" (ngModelChange)="groupe_name_changed($event)" name="groupe_name">
+      <label for="exampleCreateGroup1">Create Group</label>
+      <input [(ngModel)]="groupe_name" (ngModelChange)="groupe_name_changed($event)" name="groupe_name"
+        placeholder="DreamTeam">
+      <small id="groupCreateHelp" class="form-text text-muted">Just create a damn Group!</small>
     </div>
-    <div class="form-group">
+
+    <div class="form-group" class="my-2" style="width: 200px;">
       <label>User names:</label>
-      <input [(ngModel)]="group_users_string" name="group_users_string">
+      <input [(ngModel)]="group_users_string" (ngModelChange)="groupe_members_changed($event)" name="group_users_string"
+        placeholder="Sandi, Thomas, Selvedin">
+      <small id="groupMembersHelp" class="form-text text-muted">Comma Seperated List!</small>
     </div>
     <div class="form-group">
-      <button [disabled]="!groupe_name" (click)="save()" class="btn btn-primary">
+      <button [disabled]="!groupe_name || !group_users_string" (click)="save()" class="btn btn-primary">
         Create
       </button>
     </div>

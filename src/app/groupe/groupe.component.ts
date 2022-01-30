@@ -172,4 +172,12 @@ export class GroupeComponent implements OnInit {
       this.options = of([]);
     }
   }
+
+  groupe_members_changed(val: string): void {
+    if (val && val.length >= 2) {
+      this.options = of(this.allOptions.filter(o => o.toUpperCase().indexOf(val.toUpperCase()) > -1));
+    } else {
+      this.options = of([]);
+    }
+  }
 }
