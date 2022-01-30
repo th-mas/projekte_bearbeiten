@@ -1,0 +1,113 @@
+{
+  "time-tracking": [
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 29
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 1
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 29
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 2
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 30
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 3
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 21
+      },
+      "fromTime": "11:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 4
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 29
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 5
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 2,
+        "day": 14
+      },
+      "fromTime": "06:15",
+      "toTime": "16:15",
+      "userId": "500459",
+      "type": "REGULAR_WORK",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": "500459",
+      "firstName": "1st Nejm",
+      "surName": "Sir. Nejm",
+      "token": "password"
+    }
+  ],
+  "groups": [
+    {
+      "groupe_name": "basic",
+      "users": [
+        "admin",
+        "Saban"
+      ]
+    },
+    {
+      "groupe_name": "not so basic",
+      "users": [
+        "admin",
+        "Haso"
+      ]
+    },
+    {
+      "groupe_name": "really not basic",
+      "users": [
+        "admin",
+        "Mujo"
+      ]
+    },
+    {
+      "groupe_name": "admin",
+      "users": [
+        "admin"
+      ]
+    }
+  ]
+}
