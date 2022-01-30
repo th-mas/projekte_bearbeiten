@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { item } from 'src/app/entities/projekt';
+import { ProjektListComponent } from 'src/app/projekt-list/projekt-list.component';
 
 @Component({
   selector: 'app-linechart',

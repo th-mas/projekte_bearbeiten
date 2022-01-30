@@ -1,0 +1,56 @@
+
+<form>
+  <div class="row">
+
+    <div class="col-sm-5 form-group">
+      <form>
+        <div class="row">
+          <div class="col-sm-5 form-group">
+            <label for="id">IP</label>
+              <output type="number" id="ident" class="form-control" name="ident" ngModel>{{ident}}</output>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="bearbeiter">Bearbeiter</label>
+              <input type="text" id="bearbeiter" class="form-control" name="bearbeiter" ngModel>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="Name">Name</label>
+              <input type="text" id="name" class="form-control" name="name" ngModel>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="kunde">Kunde</label>
+              <input type="text" id="kunde" class="form-control" name="kunde" ngModel>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="bearbeiter">Holzart</label>
+              <input type="text" id="holzart" class="form-control" name="holzart" ngModel>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="Fraechter">Frächter</label>
+              <input type="text" id="fraechter" class="form-control" name="fraechter" ngModel>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="schaetzmeter">Schätzmeter</label>
+              <input type="number" id="schaetzmeter" class="form-control" name="schaetzmeter" ngModel>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="Preis">Preis/fm</label>
+              <input type="number" id="preis" class="form-control" name="preis" ngModel>
+          </div>
+
+
+
+
+
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn btn-success" type="submit" (click)="onAddItem()">Add</button>
+            <app-projekt-delete></app-projekt-delete>
+
+
+          </div>
+
+        </div>
+  </div>
+</form>

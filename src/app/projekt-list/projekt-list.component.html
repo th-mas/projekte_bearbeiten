@@ -24,27 +24,82 @@
       </div>
     </div>
 
-    <h2 class="sub-header">Projekt- Liste</h2>
-      <div class= "row">
-        <div class="col-xs-12">
-          <button class="btn btn-success">Neues Projekt</button>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col">
+         <div class="p-3 border bg-light">
+           <h2 class="sub-header">Projekt- Liste</h2>
+              <div class= "row">
+                <div class="col-xs-12">
+                  <p>
+                    <app-projekt-hinzu
+                      (hinzufuegen)="onhinzufuegen($event)"></app-projekt-hinzu>
+
+
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col">
+          <div class="p-3 border bg-light"><app-projekt-suche></app-projekt-suche></div>
         </div>
       </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
       <div class="row">
         <div class="col-xs-12">
           <a
           href="#"
           class="list-group-item clearfix"
-          *ngFor="let proj of projekte ">
-            <div class="pull-left">
-              <h4 class="list-group-item-heading">{{proj.name}}</h4>
-              <p class="list-group-item-text">{{proj.id}}</p>
-              <p class="list-group-item-text">{{proj.kunde}}</p>
-              <p class="list-group-item-text">{{proj.holzart}}</p>
-              <p class="list-group-item-text">{{proj.fraechter}}</p>
-              <p class="list-group-item-text">{{proj.schaetzmeter}}</p>
-              <p class="list-group-item-text">{{proj.preis}}</p>
+          *ngFor="let proj of projects ">
+            <div class="float-noan">
+              <table class="table table-success table-striped">
 
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Bearbeiter</th>
+                    <th scope="col">Name</th>
+
+                    <th scope="col">Kunde</th>
+                    <th scope="col">Holzart</th>
+                    <th scope="col">Frächter</th>
+                    <th scope="col">Schätzmeter</th>
+                    <th scope="col">Preis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+
+                    <td class="list-group-item-text">{{proj.id}}</td>
+                    <td class="list-group-item-text">{{proj.bearbeiter}}</td>
+                    <td class="list-group-item-text">{{proj.name}}</td>
+
+                    <td class="list-group-item-text">{{proj.kunde}}</td>
+                    <td class="list-group-item-text">{{proj.holzart}}</td>
+                    <td class="list-group-item-text">{{proj.fraechter}}</td>
+                    <td class="list-group-item-text">{{proj.schaetzmeter}}</td>
+                    <td class="list-group-item-text">{{proj.preis}}</td>
+
+                  </tr>
+
+
+
+
+
+
+              </table>
 
             </div>
           </a>
