@@ -1,37 +1,37 @@
 <h2>Time tracking</h2>
 <h3>Listing existing info</h3>
 <form class="form-inline">
-  <div *ngFor="let t of tracking">
-    <div>{{t.id}}</div>
-    <div>{{t.type}}</div>
-    <div>{{t.userId}}</div>
-    <div>{{t.date}}</div>
-    <div>{{t.fromTime}}</div>
-    <div>{{t.toTime}}</div>
-    <button routerLink="{{'/time-tracking/info/'+t.id}}">Show</button>
-  </div>
-  <hr>
-  <div class="form-group">
-    <div class="input-group">
-      <input class="form-control" placeholder="yyyy-mm-dd"
-             name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
-          <span class="ngb-dp-arrow down"></span>Choose one
-        </button>
+  <div class="d-flex flex-sm-row" *ngFor="let t of tracking">
+    <div class="d-flex flex-row p-2">
+      <div class="input-group">
+        <input class="form-control" type="text" id="{{'date-input'+t.id}}"
+               value="{{t.date | dateStr}}" disabled="disabled">
       </div>
+      <button class="btn btn-secondary" routerLink="{{'/time-tracking/info/'+t.id}}">Show</button>
     </div>
   </div>
-  <app-time-range-picker [fromTime]="fromTime" [toTime]="toTime" (toChanged)="toTime=$event"
-                         (fromChanged)="fromTime=$event"></app-time-range-picker>
-  <select [value]="type">
-    <option *ngFor="let opt of enumType | enumToArray"
-            [value]="opt"
-            [attr.selected]="opt == type ? 'selected' : false">
-      {{opt}}
-    </option>
-  </select>
-  <button (click)="save()">Save</button>
+
+  <div class="form-group">
+    <div class="input-group">
+      <label for="date-input">Tracking date:</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" id="date-input"
+             name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">Choose one</button>
+      </div>
+    </div>
+    <app-time-range-picker [fromTime]="fromTime" [toTime]="toTime" (toChanged)="toTime=$event"
+                           (fromChanged)="fromTime=$event"></app-time-range-picker>
+    <label for="tracking-type">Tracking type</label>
+    <select [value]="type" class="form-control" id="tracking-type">
+      <option *ngFor="let opt of enumType | enumToArray"
+              [value]="opt"
+              [attr.selected]="opt === type ? 'selected' : undefined">
+        {{opt}}
+      </option>
+    </select>
+    <button class="btn btn-primary" (click)="save()">Save</button>
+  </div>
 </form>
 
 <pre>Model: {{ {date, fromTime, toTime, type} | json }}</pre>

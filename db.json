@@ -35,6 +35,36 @@
       "userId": "admin",
       "type": "REGULAR_WORK",
       "id": 3
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 21
+      },
+      "fromTime": "11:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 4
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 29
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "admin",
+      "type": "REGULAR_WORK",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id":  "500459",
+      "token": "password"
     }
   ]
 }

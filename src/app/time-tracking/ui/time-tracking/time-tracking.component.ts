@@ -24,7 +24,9 @@ export class TimeTrackingComponent implements OnInit {
       month: now.getMonth() + 1,
       day: now.getDate()
     }
+    // Standard starting time
     this.fromTime = "08:00";
+    // Standard end time for 7:42 days
     this.toTime = "16:12";
   }
 

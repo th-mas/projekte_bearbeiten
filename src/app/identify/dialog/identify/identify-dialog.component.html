@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Please identify</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Login</h3>
+  <div class="form-group">
+    <label for="id-input">Id:</label>
+    <input id="id-input" type="text" placeholder="user-id" [(ngModel)]="user">
+    <label for="token-input">Token:</label>
+    <input id="token-input" type="password" placeholder="user-id" [(ngModel)]="token">
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button cdkFocusInitial (click)="identify()">Try login</button>
+</mat-dialog-actions>

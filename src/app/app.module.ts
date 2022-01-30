@@ -13,7 +13,9 @@ import {LinechartComponent} from './dashboard/linechart/linechart.component';
 import {BarchartComponent} from './dashboard/barchart/barchart.component';
 import {CommonModule} from '@angular/common';
 import {TimeTrackingModule} from "./time-tracking/time-tracking.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {IdentifyModule} from "./identify/identify.module";
+import {SorryModule} from "./sorry/sorry.module";
 
 
 @NgModule({
@@ -25,17 +27,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProjektSucheComponent,
     DashboardComponent,
     LinechartComponent,
-    BarchartComponent
-  ],
+    BarchartComponent],
   imports: [
     BrowserModule,
     CommonModule,
     RouterModule.forRoot(APP_ROUTES),
     BrowserAnimationsModule,
-    TimeTrackingModule
+    TimeTrackingModule,
+    IdentifyModule,
+    SorryModule
   ],
-providers: [],
-bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 
 })
-export class AppModule { }
+export class AppModule {
+}
