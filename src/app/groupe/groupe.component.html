@@ -37,7 +37,14 @@
     <tbody>
       <tr *ngFor="let f of groups" [class.active]="f === selectedGroup">
         <td>{{ f.groupe_name }}</td>
-        <td>{{ f.users | usersToString }}</td>
+        <td>
+          <u>
+            <li *ngFor="let name of f.users">
+              {{name.user_name}}
+              <!-- {{ f.users | usersToString }} -->
+            </li>
+          </u>
+        </td>
         <td>
           <button (click)="select(f)" class="btn btn-primary">Select</button>
         </td>
