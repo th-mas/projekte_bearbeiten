@@ -13,12 +13,30 @@ export class GroupeComponent implements OnInit {
   groupe_users: Array<User> = [];
   groups: Array<Groupe> = [];
   selectedGroup: Groupe | null = null;
+  all_groups!: Groupe[];
 
 
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    const url = 'http://localhost:3000/groups'
+
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json');
+
+
+
+    this.http
+      .get<Groupe[]>(url, { headers })
+      .subscribe({
+        next: (all: Groupe[]) => {
+          this.all_groups = all;
+        },
+        error: (errResp) => {
+          console.error('Error loading flights', errResp);
+        }
+      });
   }
 
   add_to_group(u: User): void {
@@ -48,7 +66,14 @@ export class GroupeComponent implements OnInit {
       .get<Groupe[]>(url, { headers, params })
       .subscribe({
         next: (groups: Groupe[]) => {
-          this.groups = groups;
+          if (this.groupe_name == 'all') {
+            console.log("PRINT ALLL: ", this.all_groups)
+            this.groups = this.all_groups;
+          }
+          else {
+            console.log("Printing Groupe name", this.groupe_name)
+            this.groups = groups;
+          }
         },
         error: (errResp) => {
           console.error('Error loading flights', errResp);
