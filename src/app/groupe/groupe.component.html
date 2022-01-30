@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="header">
+        <h2 class="title">Group Search</h2>
+    </div>
+
+    <div class="content">
+        <form>
+            <div class="form-group">
+                <label>Groupe Name:</label>
+                <input [(ngModel)]="groupe_name" name="groupe_name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button [disabled]="!groupe_name" (click)="search_group()" class="btn btn-default">
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <table class="table table-condensed" *ngIf="groups.length > 0">
+        <thead>
+            <tr>
+                <th>Group Name</th>
+                <th>Users</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let f of groups" [class.active]="f === selectedGroup">
+                <td>{{ f.groupe_name }}</td>
+                <td>{{ f.users }}</td>
+
+                <td>
+                    <a (click)="select(f)">Select</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card" *ngIf="selectedGroup">
+    <div class="content">
+        <pre>{{ selectedGroup | json }}</pre>
+    </div>
+</div>
+
+
+
+<!-- Printing all data in json groups
+    <div *ngFor="let dat of groups">
+    <pre>{{dat | json}}</pre>
+</div> -->

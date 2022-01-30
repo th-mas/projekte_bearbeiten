@@ -1,3 +1,14 @@
+import { RouterModule, Routes } from '@angular/router';
+import { ProjektListComponent } from "./projekt-list/projekt-list.component";
+import { LandingpageComponent } from "./landingpage/landingpage.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { GroupeComponent } from './groupe/groupe.component';
+import { NgModule } from '@angular/core';
+import { LogInComponent } from './components/log-in/log-in.component';
+import { RegisterComponent } from './components/register/register.component';
+
+
+
 import {Routes} from '@angular/router';
 import {ProjektListComponent} from "./projekt-list/projekt-list.component";
 import {LandingpageComponent} from "./landingpage/landingpage.component";
@@ -55,6 +66,15 @@ export const APP_ROUTES: Routes = [
     component: IdentifyComponent
   },
   {
+    path: '', pathMatch: 'full', redirectTo: 'login'
+  },
+  {
+    path: 'login', component: LogInComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
     path: 'landing',
     component: LandingpageComponent,
     canActivate: [IdentifyGuard]
@@ -74,7 +94,19 @@ export const APP_ROUTES: Routes = [
     component: SorryComponent
   },
   {
+    path: 'group',
+    component: GroupeComponent
+  },
+  {
     path: '**',
+    redirectTo: 'login'
     redirectTo: 'identify'
   }
-]
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(APP_ROUTES)],
+  exports: [RouterModule]
+})
+
+export class AppRoutingModule { }

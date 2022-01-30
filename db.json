@@ -66,5 +66,34 @@
       "id":  "500459",
       "token": "password"
     }
+  ],
+  "groups": [
+    {
+      "groupe_name": "basic",
+      "users": [
+        "admin",
+        "Saban"
+      ]
+    },
+    {
+      "groupe_name": "not so basic",
+      "users": [
+        "admin",
+        "Haso"
+      ]
+    },
+    {
+      "groupe_name": "really not basic",
+      "users": [
+        "admin",
+        "Mujo"
+      ]
+    },
+    {
+      "groupe_name": "admin",
+      "users": [
+        "admin"
+      ]
+    }
   ]
 }
