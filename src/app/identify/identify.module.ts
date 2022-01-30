@@ -8,6 +8,7 @@ import {IdentifyGuard} from "./identify-guard.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {AngularMaterialModule} from "../angular-material.module";
+import {AdminGuard} from "./admin-guard.service";
 
 
 
@@ -25,6 +26,6 @@ import {AngularMaterialModule} from "../angular-material.module";
   exports:[
     IdentifyComponent
   ],
-  providers: [IdentifyGuard]
+  providers: [IdentifyGuard, AdminGuard]
 })
 export class IdentifyModule { }
