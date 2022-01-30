@@ -1,18 +1,18 @@
 <div>
   <div>
     <label>Date:</label>
-    <input disabled value="{{(info.date)}}">
+    <input disabled type="date" [(ngModel)]="info.date">
   </div>
   <div>
     <label>From time:</label>
-    <input disabled type="time" value="{{info.fromTime}}">
+    <input disabled type="time" [(ngModel)]="info.fromTime">
   </div>
   <div>
     <label>To time:</label>
-    <input disabled type="time" value="{{info.toTime}}">
+    <input disabled type="time" [(ngModel)]="info.toTime">
   </div>
   <div>
     <label>Booked time:</label>
-    <input disabled value="{{duration}}">
+    <input disabled [ngModel]="duration">
   </div>
 </div>

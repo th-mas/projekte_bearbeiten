@@ -16,7 +16,7 @@ export class TimeTrackingInfoComponent implements OnInit {
     fromTime: '',
     date: {},
     type: TrackingType.PAUSE,
-    userId: 'admin'
+    userId: ''
   };
 
   constructor(private route: ActivatedRoute, private service: TimeTrackingService) {

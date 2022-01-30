@@ -1,18 +1,11 @@
-import { RouterModule, Routes } from '@angular/router';
-import { ProjektListComponent } from "./projekt-list/projekt-list.component";
-import { LandingpageComponent } from "./landingpage/landingpage.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { GroupeComponent } from './groupe/groupe.component';
-import { NgModule } from '@angular/core';
-import { LogInComponent } from './components/log-in/log-in.component';
-import { RegisterComponent } from './components/register/register.component';
-
-
-
-import {Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {ProjektListComponent} from "./projekt-list/projekt-list.component";
 import {LandingpageComponent} from "./landingpage/landingpage.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {GroupeComponent} from './groupe/groupe.component';
+import {NgModule} from '@angular/core';
+import {LogInComponent} from './components/log-in/log-in.component';
+import {RegisterComponent} from './components/register/register.component';
 import {IdentifyComponent} from "./identify/identify-component/identify.component";
 import {SorryComponent} from "./sorry/sorry/sorry.component";
 import {IdentifyGuard} from "./identify/identify-guard.service";
@@ -40,6 +33,14 @@ export function loggedIn(user: string): void {
   storage.set('context', JSON.stringify(CONTEXT));
 }
 
+export function logout(): void {
+  storage.clearItem('context');
+  CONTEXT.logged = false;
+  CONTEXT.user = '';
+  CONTEXT.touched = '';
+
+}
+
 export function isLogged(): boolean {
   if (CONTEXT.logged && CONTEXT.user) {
     return true;
@@ -62,11 +63,13 @@ export function isLogged(): boolean {
 
 export const APP_ROUTES: Routes = [
   {
-    path: 'identify',
-    component: IdentifyComponent
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'identify'
   },
   {
-    path: '', pathMatch: 'full', redirectTo: 'login'
+    path: 'identify',
+    component: IdentifyComponent
   },
   {
     path: 'login', component: LogInComponent
@@ -95,11 +98,11 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'group',
-    component: GroupeComponent
+    component: GroupeComponent,
+    canActivate: [IdentifyGuard]
   },
   {
     path: '**',
-    redirectTo: 'login'
     redirectTo: 'identify'
   }
 ];

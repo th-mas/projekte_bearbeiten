@@ -41,12 +41,21 @@ export class IdentifyComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     const dialogRef = this.dialog.open(IdentifyComponentDialog, dialogConfig);
+
     dialogRef.afterClosed().subscribe(result => {
-      this.service.loginUser(result).subscribe({
-        next: (response) => response && result.token === response.token ? this.goHome(response.id) : this.verifyUser(),
-        error: () => this.verifyUser()
-      })
+      if (result === 'GO_REGISTER_YOURSELF') {
+        this.goRegisterYourself();
+      } else {
+        this.service.loginUser(result).subscribe({
+          next: (response) => response && result.token === response.token ? this.goHome(response.id) : this.verifyUser(),
+          error: () => this.verifyUser()
+        })
+      }
     });
+  }
+
+  goRegisterYourself(): void {
+    this.router.navigate(['/register']);
   }
 
   private goHome(user: string) {

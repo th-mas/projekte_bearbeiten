@@ -5,6 +5,9 @@ import {IdentifyComponentDialog} from './dialog/identify/identify-dialog.compone
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";
 import {IdentifyGuard} from "./identify-guard.service";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {AngularMaterialModule} from "../angular-material.module";
 
 
 
@@ -16,7 +19,8 @@ import {IdentifyGuard} from "./identify-guard.service";
   imports: [
     MatDialogModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AngularMaterialModule
   ],
   exports:[
     IdentifyComponent

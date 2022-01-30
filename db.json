@@ -59,11 +59,25 @@
       "userId": "admin",
       "type": "REGULAR_WORK",
       "id": 5
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 2,
+        "day": 14
+      },
+      "fromTime": "06:15",
+      "toTime": "16:15",
+      "userId": "500459",
+      "type": "REGULAR_WORK",
+      "id": 6
     }
   ],
   "users": [
     {
-      "id":  "500459",
+      "id": "500459",
+      "firstName": "1st Nejm",
+      "surName": "Sir. Nejm",
       "token": "password"
     }
   ],

@@ -18,4 +18,9 @@ export class IdentifyComponentDialog {
     this.ref.close(this.payload);
   }
 
+
+  register(): void {
+    this.ref.close('GO_REGISTER_YOURSELF');
+  }
+
 }
