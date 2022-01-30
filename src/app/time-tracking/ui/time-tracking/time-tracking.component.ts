@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TimeTrackingService} from "../../data-access/time-tracking.service";
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
-import {getUserId} from "../../../app-routing.module";
+import {getUserId} from "../../../common/UserContext";
 
 
 @Component({

@@ -137,98 +137,56 @@
     {
       "id": "500459",
       "firstName": "1st Nejm",
-      "surName": "Sir. Nejm",
-      "token": "password"
+      "lastName": "Sir. Nejm",
+      "token": "password",
+      "access": "EMPLOYEE"
     },
     {
       "id": "420",
       "firstName": "2st Nejm",
-      "surName": "Sir. Nejm",
-      "token": "password"
+      "lastName": "Sir. Nejm",
+      "token": "password",
+      "access": "ADMIN"
     }
   ],
   "groups": [
     {
-      "groupe_name": "tewfewf",
+      "groupe_name": "Group1",
       "users": [
         {
-          "user_name": "fwefwe",
+          "user_name": "1",
           "access_level": 0
         },
         {
-          "user_name": "fwef",
+          "user_name": "2",
           "access_level": 0
         },
         {
-          "user_name": "wef",
+          "user_name": "3",
           "access_level": 0
         },
         {
-          "user_name": "w",
+          "user_name": "4",
+          "access_level": 0
+        },
+        {
+          "user_name": "five",
           "access_level": 0
         }
       ],
       "id": 1
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "mitarbeiter": "Hans Vögel (Charles)",
+      "preis": 102.22
     },
     {
-      "groupe_name": "wef",
-      "users": [
-        {
-          "user_name": "we",
-          "access_level": 0
-        },
-        {
-          "user_name": "w",
-          "access_level": 0
-        }
-      ],
+      "mitarbeiter": "MK",
+      "preis": 22.33,
       "id": 2
-    },
-    {
-      "groupe_name": "wef",
-      "users": [
-        {
-          "user_name": "",
-          "access_level": 0
-        },
-        {
-          "user_name": "",
-          "access_level": 0
-        },
-        {
-          "user_name": "",
-          "access_level": 0
-        },
-        {
-          "user_name": "",
-          "access_level": 0
-        },
-        {
-          "user_name": "",
-          "access_level": 0
-        }
-      ],
-      "id": 3
-    },
-    {
-      "groupe_name": "a",
-      "users": [
-        {
-          "user_name": "wefwef",
-          "access_level": 0
-        }
-      ],
-      "id": 4
-    },
-    {
-      "groupe_name": "wefwef",
-      "users": [
-        {
-          "user_name": "wefwef",
-          "access_level": 0
-        }
-      ],
-      "id": 5
     }
   ]
 }

@@ -27,7 +27,7 @@
       <option *ngFor="let opt of enumType | enumToArray"
               [value]="opt"
               [attr.selected]="opt === type ? 'selected' : undefined">
-        {{opt}}
+        {{opt | enumStr}}
       </option>
     </select>
     <button class="btn btn-primary" (click)="save()">Save</button>

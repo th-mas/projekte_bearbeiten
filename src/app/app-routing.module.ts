@@ -9,57 +9,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {IdentifyComponent} from "./identify/identify-component/identify.component";
 import {SorryComponent} from "./sorry/sorry/sorry.component";
 import {IdentifyGuard} from "./identify/identify-guard.service";
-import {LocalStorage} from "./common/storage/storage";
-
-const storage = new LocalStorage();
-
-const CONTEXT = {
-  logged: false,
-  user: '',
-  touched: ''
-}
-
-export function getUserId(): string {
-  if (isLogged()) {
-    return CONTEXT.user;
-  }
-  return '';
-}
-
-export function loggedIn(user: string): void {
-  CONTEXT.logged = true;
-  CONTEXT.user = user;
-  CONTEXT.touched = new Date().toISOString();
-  storage.set('context', JSON.stringify(CONTEXT));
-}
-
-export function logout(): void {
-  storage.clearItem('context');
-  CONTEXT.logged = false;
-  CONTEXT.user = '';
-  CONTEXT.touched = '';
-
-}
-
-export function isLogged(): boolean {
-  if (CONTEXT.logged && CONTEXT.user) {
-    return true;
-  }
-  const context = storage.get('context');
-  if (context) {
-    let parsedContext = JSON.parse(context);
-    if (parsedContext.touched && new Date().getTime() - new Date(parsedContext.touched).getTime() < 1800000) {
-      CONTEXT.logged = parsedContext.logged;
-      CONTEXT.user = parsedContext.user;
-      CONTEXT.touched = new Date().toISOString();
-    } else {
-      CONTEXT.logged = false;
-      CONTEXT.user = '';
-      CONTEXT.touched = '';
-    }
-  }
-  return !!(CONTEXT.logged && CONTEXT.user);
-}
+import {AdminGuard} from "./identify/admin-guard.service";
 
 export const APP_ROUTES: Routes = [
   {
@@ -99,7 +49,7 @@ export const APP_ROUTES: Routes = [
   {
     path: 'group',
     component: GroupeComponent,
-    canActivate: [IdentifyGuard]
+    canActivate: [AdminGuard]
   },
   {
     path: '**',

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {getUserId, logout} from "../app-routing.module";
 import {Router} from "@angular/router";
+import {getUserInfo, logout} from "../common/UserContext";
 
 @Component({
   selector: 'app-header',
@@ -8,14 +8,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  userId = getUserId();
+  userId = '';
 
   constructor(private router: Router) {
   }
 
-
   ngOnInit(): void {
+    this.userId = getUserInfo();
   }
 
   logout(): void {

@@ -24,8 +24,9 @@ export class ProjektListComponent implements OnInit {
   ngOnInit(): void {
     console.log()
   }
-  onhinzufuegen(Item:item){
-    projekte.push(Item);
+
+  onhinzufuegen(it: item){
+    projekte.push(it);
   }
 
 }

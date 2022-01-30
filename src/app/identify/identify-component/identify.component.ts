@@ -3,7 +3,8 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {IdentifyComponentDialog} from "../dialog/identify/identify-dialog.component";
 import {IdentifyService} from "../data-access/identify.service";
-import {isLogged, loggedIn} from "../../app-routing.module";
+import {IdentifyObject} from "../data-access/entities/IdentifyObject";
+import {isLogged, loggedIn} from "../../common/UserContext";
 
 @Component({
   selector: 'app-identify-component',
@@ -47,7 +48,7 @@ export class IdentifyComponent implements OnInit {
         this.goRegisterYourself();
       } else {
         this.service.loginUser(result).subscribe({
-          next: (response) => response && result.token === response.token ? this.goHome(response.id) : this.verifyUser(),
+          next: (response) => response && result.token === response.token ? this.goHome(response) : this.verifyUser(),
           error: () => this.verifyUser()
         })
       }
@@ -58,7 +59,7 @@ export class IdentifyComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
-  private goHome(user: string) {
+  private goHome(user: IdentifyObject) {
     loggedIn(user);
     this.router.navigate(['/landing']);
   }
