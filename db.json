@@ -131,6 +131,30 @@
       "userId": "420",
       "type": "REGULAR_WORK",
       "id": 16
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 6
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 17
+    },
+    {
+      "date": {
+        "year": 2022,
+        "month": 1,
+        "day": 31
+      },
+      "fromTime": "08:00",
+      "toTime": "16:12",
+      "userId": "420",
+      "type": "REGULAR_WORK",
+      "id": 18
     }
   ],
   "users": [
@@ -175,6 +199,34 @@
         }
       ],
       "id": 1
+    },
+    {
+      "groupe_name": "testGruppe",
+      "users": [
+        {
+          "user_name": "sand",
+          "access_level": 0
+        },
+        {
+          "user_name": "Thomo",
+          "access_level": 0
+        },
+        {
+          "user_name": "Selvedin",
+          "access_level": 0
+        }
+      ],
+      "id": 2
+    },
+    {
+      "groupe_name": "troll",
+      "users": [
+        {
+          "user_name": "said",
+          "access_level": 0
+        }
+      ],
+      "id": 4
     }
   ],
   "projects": [

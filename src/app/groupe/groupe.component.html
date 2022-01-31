@@ -69,6 +69,9 @@
           <button (click)="select(f)" class="btn btn-primary">Select</button>
         </td>
         <td>
+          <button class="btn btn-primary" routerLink="{{'/groups/info/'+f.id}}">Show</button>
+        </td>
+        <td>
           <button (click)="delete(f)" class="btn btn-danger">Delete</button>
         </td>
       </tr>
