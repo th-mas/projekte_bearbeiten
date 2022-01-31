@@ -10,7 +10,7 @@ const routes: Routes = [
         canActivate: [IdentifyGuard],
         children: [
             {
-                path: 'info/:id',
+                path: ':id',
                 component: GroupInfoComponent
             }
         ]

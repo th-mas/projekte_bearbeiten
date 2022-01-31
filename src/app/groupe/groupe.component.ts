@@ -19,6 +19,10 @@ export class GroupeComponent implements OnInit {
   all_groups!: Groupe[];
   options: Observable<string[]> = of([]);
   allOptions: string[] = [];
+  info_group: Groupe = {
+    groupe_name: '',
+    users: [],
+  };
 
   constructor(private service: GroupeService) { }
 

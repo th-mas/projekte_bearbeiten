@@ -23,6 +23,7 @@ import { SorryModule } from "./sorry/sorry.module";
 import { UsersToStringPipe } from './groupe/pipe/users-to-string.pipe';
 import { GroupInfoComponent } from './groupe/group-info/group-info.component';
 import { GroupRoutesModule } from './groupe/groupe-routes.module';
+import { BabyChildComponent } from './groupe/baby-child/baby-child.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { GroupRoutesModule } from './groupe/groupe-routes.module';
     LogInComponent,
     RegisterComponent,
     UsersToStringPipe,
-    GroupInfoComponent
+    GroupInfoComponent,
+    BabyChildComponent
   ],
   imports: [
     BrowserModule,

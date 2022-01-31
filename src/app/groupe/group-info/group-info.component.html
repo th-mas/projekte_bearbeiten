@@ -1,15 +1,36 @@
 <div class="card">
-    <h1>HEY</h1>
-    {{info.id}}
-    <tbody>
-        <td>{{ info.groupe_name }}</td>
-        <td>
-            <u>
-                <li *ngFor="let name of info.users">
-                    {{name.user_name}}
-                    <!-- {{ info.users | usersToString }} -->
-                </li>
-            </u>
-        </td>
-    </tbody>
+    <h1>Group Infos</h1>
+    <h3> Groupe ID: {{this.id}}</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                Groupe Name: {{this.groupe_name | async}}
+            </div>
+            <div class="col-sm">
+                Groupe Members:
+                <br />
+                <u>
+                    <li *ngFor="let name of this.users | async">
+                        {{name.user_name}}
+                    </li>
+                </u>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <label for="exampleChangeGroupeName">Enter new Name</label>
+    <input [(ngModel)]="groupe_name_change" (ngModelChange)="groupe_name_changed($event)" name="groupe_name_change"
+        placeholder="DreamTeam">
+    <label for="exampleChangeGroupeUsers">Add Users</label>
+    <input [(ngModel)]="groupe_members_change" (ngModelChange)="groupe_members_changed($event)" name="groupe_add_users"
+        placeholder="User1, User2, User3">
+    <div class="col-sm">
+        <button class="btn btn-warning" (click)="changeObject()">Update Object</button>
+        <baby [g]="this.groupe_name | async">
+
+            <!-- <button class="btn btn-warning">Change</button> -->
+        </baby>
+    </div>
 </div>
