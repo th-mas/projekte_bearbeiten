@@ -11,6 +11,7 @@ import { TimeTrackingInfoComponent } from './ui/time-tracking-info/time-tracking
 import { EnumStrPipe } from './pipe/enum-str.pipe';
 import { DateStrPipe } from './pipe/date-str.pipe';
 import {AngularMaterialModule} from "../angular-material.module";
+import {TimeTrackingCardComponent} from "./ui/time-tracking-card/time-tracking-card.component";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AngularMaterialModule} from "../angular-material.module";
     TimeRangePickerComponent,
     EnumToArrayPipe,
     TimeTrackingInfoComponent,
+    TimeTrackingCardComponent,
     EnumStrPipe,
     DateStrPipe
   ],

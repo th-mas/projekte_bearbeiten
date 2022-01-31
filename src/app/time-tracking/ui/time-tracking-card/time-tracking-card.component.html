@@ -1,15 +1,11 @@
-<!--
 <mat-card>
-  <mat-card-title>Simple Card Example</mat-card-title>
+  <mat-card-title>{{record.date | dateStr}}</mat-card-title>
   <mat-card-content>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+    {{duration}} ({{record.fromTime}} - {{record.toTime}})
+    <br>
+    {{record.type | enumStr}}
   </mat-card-content>
+  <mat-card-actions>
+    <button class="btn btn-primary" routerLink="{{'/time-tracking/info/'+record.id}}">Details</button>
+  </mat-card-actions>
 </mat-card>
--->

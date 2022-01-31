@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TimeTrackingService} from "../../data-access/time-tracking.service";
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
 import {getUserId} from "../../../common/UserContext";
+import {strToDateRep} from "../common/TimeTrackingUtils";
 
 
 @Component({
@@ -17,6 +18,9 @@ export class TimeTrackingComponent implements OnInit {
   toTime: string;
   type = TrackingType.REGULAR_WORK;
   enumType = TrackingType;
+  breakpoint = 2;
+
+  searchDate: any;
 
   constructor(private service: TimeTrackingService) {
     const now = new Date();
@@ -32,14 +36,15 @@ export class TimeTrackingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     this.service.loadByMonth().subscribe({
-      next: (data) =>
-        Array.isArray(data) ? this.tracking = data : [data]
+      next: (data: any) =>
+        Array.isArray(data) ? this.tracking = data.map((r: any) => {return {...r, date: strToDateRep(r.date)}}) : [{...data, date: strToDateRep(data.date)}]
 
     })
   }
 
-  public save(): void {
+  save(): void {
     console.log("saving...");
     this.service.creatRecord({
       date: this.date, fromTime: this.fromTime, toTime: this.toTime, userId: getUserId(), type: this.type
@@ -47,6 +52,21 @@ export class TimeTrackingComponent implements OnInit {
       next: (response) => console.log("Next response: ", response)
       , error: (response) => console.log("Error", response)
     });
+  }
+
+  onResize(event: any) {
+    console.log(event, typeof event);
+    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
+  }
+
+  searchByDate(): void {
+    if (this.searchDate) {
+      let parts = this.searchDate.split('-');
+      this.service.findRecordsByDate(strToDateRep(this.searchDate)).subscribe({
+        next: (r) => console.log(r),
+        error: (e) => console.log(e)
+      })
+    }
   }
 
 }

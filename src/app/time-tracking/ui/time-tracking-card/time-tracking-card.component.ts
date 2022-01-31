@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
+import {updateDurationInfo} from "../common/TimeTrackingUtils";
 
 @Component({
   selector: 'app-time-tracking-card',
@@ -8,9 +9,12 @@ import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeT
 })
 export class TimeTrackingCardComponent implements OnInit {
 
+  duration: string = '';
   constructor() { }
 
   ngOnInit(): void {
+    const {fromTime, toTime} = this.record;
+    this.duration = updateDurationInfo(fromTime, toTime);
   }
 
   @Input() record: TimeTrackingRecord = {
@@ -20,5 +24,4 @@ export class TimeTrackingCardComponent implements OnInit {
     userId: '',
     type: TrackingType.VACATION
   };
-
 }

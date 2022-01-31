@@ -6,6 +6,8 @@ import {Observable, of} from "rxjs";
 import {ErrorObservable} from "rxjs-compat/observable/ErrorObservable";
 import {TimeTracingServiceError} from "./entities/TimeTracingServiceError";
 import {environment} from "../../../environments/environment";
+import {dateRepToStr, padToString} from "../ui/common/TimeTrackingUtils";
+import {DateRepresentation} from "./entities/DateRepresentation";
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +30,14 @@ export class DefaultTimeTrackingService implements TimeTrackingService {
     const headers = new HttpHeaders()
       .set('Accept', 'application/json');
 
-    return this.http.post(this.timeTrackingPath(), record, {headers});
+    return this.http.post(this.timeTrackingPath(), {
+      ...record,
+      date: dateRepToStr(record.date)
+    }, {headers});
   }
 
-  findRecordsByDate(date: Date): Observable<TimeTrackingRecord[] | TimeTracingServiceError> {
-    const params = new HttpParams().set('date', date.toISOString());
+  findRecordsByDate(date: DateRepresentation): Observable<TimeTrackingRecord[] | TimeTracingServiceError> {
+    const params = new HttpParams().set('date', dateRepToStr(date));
     const headers = new HttpHeaders()
       .set('Accept', 'application/json');
     return this.http.get(this.timeTrackingPath(), {params, headers});

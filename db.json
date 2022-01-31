@@ -1,11 +1,7 @@
 {
   "time-tracking": [
     {
-      "date": {
-        "year": 2022,
-        "month": 2,
-        "day": 14
-      },
+      "date": "2022-02-14",
       "fromTime": "06:15",
       "toTime": "16:15",
       "userId": "500459",
@@ -13,11 +9,7 @@
       "id": 6
     },
     {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
+      "date": "2022-1-31",
       "fromTime": "08:00",
       "toTime": "16:12",
       "userId": "420",
@@ -25,136 +17,12 @@
       "id": 7
     },
     {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
+      "date": "2022-01-31",
       "fromTime": "08:00",
       "toTime": "16:12",
       "userId": "420",
       "type": "REGULAR_WORK",
       "id": 8
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 9
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 10
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 11
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 12
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 13
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 14
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 15
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:59",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 16
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 6
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 17
-    },
-    {
-      "date": {
-        "year": 2022,
-        "month": 1,
-        "day": 31
-      },
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 18
     }
   ],
   "users": [
@@ -239,6 +107,11 @@
       "mitarbeiter": "MK",
       "preis": 22.33,
       "id": 2
+    },
+    {
+      "mitarbeiter": "MK",
+      "preis": 22.33,
+      "id": 4
     }
   ]
 }

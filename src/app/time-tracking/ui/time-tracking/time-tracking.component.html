@@ -1,16 +1,11 @@
 <h2>Time tracking</h2>
 <h3>Listing existing info</h3>
-<form class="form-inline">
-  <div class="d-flex flex-sm-row" *ngFor="let t of tracking">
-    <div class="d-flex flex-row p-2">
-      <div class="input-group">
-        <input class="form-control" type="text" id="{{'date-input'+t.id}}"
-               value="{{t.date | dateStr}}" disabled="disabled">
-      </div>
-      <button class="btn btn-secondary" routerLink="{{'/time-tracking/info/'+t.id}}">Show</button>
-    </div>
-  </div>
+<input type="date" [(ngModel)]="searchDate"><a (click)="searchByDate()">Search</a>
+<mat-grid-list gutterSize="16px" class="col-xs-12 col-sm-6 col-md-4 col-lg-3" [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+  <app-time-tracking-card [record]="t" *ngFor="let t of tracking"></app-time-tracking-card>
+</mat-grid-list>
 
+<form class="form-inline">
   <div class="form-group">
     <div class="input-group">
       <label for="date-input">Tracking date:</label>

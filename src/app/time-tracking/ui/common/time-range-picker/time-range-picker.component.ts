@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {padToString, toHoursAndMinutes, updateDurationInfo} from "../TimeTrackingUtils";
 
 @Component({
   selector: 'app-time-range-picker',
@@ -19,15 +20,15 @@ export class TimeRangePickerComponent implements OnInit {
   ngOnInit(): void {
     if (!this.fromTime) {
       const now = new Date();
-      this.fromTime = `${this.padToString(now.getHours())}:${this.padToString(now.getMinutes())}`;
+      this.fromTime = `${padToString(now.getHours())}:${padToString(now.getMinutes())}`;
     }
     this.onFromChange(this.fromTime);
   }
 
 
   onFromChange(val?: string) {
-    const hrsMins = this.toHoursAndMinutes(val);
-    const toTime = this.toHoursAndMinutes(this.toTime);
+    const hrsMins = toHoursAndMinutes(val);
+    const toTime = toHoursAndMinutes(this.toTime);
     if (hrsMins) {
       let update;
       if (toTime) {
@@ -44,16 +45,16 @@ export class TimeRangePickerComponent implements OnInit {
         } else {
           min++;
         }
-        this.toTime = `${this.padToString(hrs)}:${this.padToString(min)}`;
+        this.toTime = `${padToString(hrs)}:${padToString(min)}`;
       }
       this.fromChanged.emit(this.fromTime);
     }
-    this.updateDurationInfo();
+    this.duration = updateDurationInfo(this.fromTime, this.toTime);
   }
 
   onToChange(val?: string): void {
-    const hrsMins = this.toHoursAndMinutes(val);
-    let fromTime = this.toHoursAndMinutes(this.fromTime);
+    const hrsMins = toHoursAndMinutes(val);
+    let fromTime = toHoursAndMinutes(this.fromTime);
 
     if (hrsMins) {
       let update;
@@ -71,64 +72,14 @@ export class TimeRangePickerComponent implements OnInit {
         } else {
           min--;
         }
-        this.fromTime = `${this.padToString(hrs)}:${this.padToString(min)}`;
+        this.fromTime = `${padToString(hrs)}:${padToString(min)}`;
       }
       this.toChanged.emit(this.toTime);
     }
-    this.updateDurationInfo();
-  }
-
-  private updateDurationInfo() {
-    if (this.fromTime && this.toTime) {
-      const from = this.getAsTime(this.fromTime);
-      const to = this.getAsTime(this.toTime);
-      let duration = to.getTime() - from.getTime();
-      let minutes  = (duration / 1000) / 60;
-      let hours = (minutes - (minutes % 60)) / 60;
-      const hadPause = hours >= 6
-      if (hadPause) {
-        minutes = minutes - 30; // Pause
-      }
-      hours = (minutes - (minutes % 60)) / 60;
-      minutes = minutes - (minutes - (minutes % 60));
-      this.duration = `${hours}:${minutes}${hadPause ? ' [ Pause 30 minutes ]' : ''}`;
-    } else {
-      this.duration = '';
-    }
-  }
-
-  private getAsTime(val: string): Date {
-    const now = new Date();
-    now.setHours(this.getHours(val));
-    now.setMinutes(this.getMinutes(val));
-    now.setSeconds(0);
-    now.setMilliseconds(0);
-    return new Date(now.toISOString());
-  }
-
-  private getHours(val: string): number {
-    const splitted = val.split(':');
-    return Number.parseInt(splitted[0]);
-  }
-
-  private getMinutes(val: string): number {
-    const splitted = val.split(':');
-    return Number.parseInt(splitted[1]);
+    this.duration = updateDurationInfo(this.fromTime, this.toTime);
   }
 
 
 
-  private padToString(val: number): string {
-    return `${val}`.padStart(2, '0');
-  }
 
-  private toHoursAndMinutes(val: string | undefined): { hrs: number, min: number } | undefined {
-    if (val) {
-      const hhmm: string[] = val.split(":");
-      let hrs = Number.parseInt(hhmm[0]);
-      let min = Number.parseInt(hhmm[1]);
-      return {hrs, min};
-    }
-    return undefined;
-  }
 }
