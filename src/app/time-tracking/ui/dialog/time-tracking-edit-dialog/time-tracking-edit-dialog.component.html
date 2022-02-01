@@ -1,0 +1,40 @@
+<mat-dialog-content class="mat-typography fillSpace">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Create time tracking record</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Tracking date</mat-label>
+            <input matInput placeholder="dd/mm/yyyy" type="date" [(ngModel)]="date"
+                   (ngModelChange)="updateDate($event)">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+        </p>
+
+        <app-time-range-picker [fromTime]="fromTime" [toTime]="toTime"></app-time-range-picker>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Tracking type</mat-label>
+            <mat-select disableRipple [value]="type">
+              <mat-option *ngFor="let opt of enumType | enumToArray"
+                          [value]="opt"
+              [attr.selected]="opt === type ? 'selected' : null">
+                {{opt | enumStr}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Time tracking type: Regular work time, Vacation or Pause</mat-hint>
+          </mat-form-field>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button color="accent" class="btn-block" matDialogClose>Close</button>
+  <button mat-stroked-button color="accent" class="btn-primary" (click)="createRecord()">Create</button>
+</mat-dialog-actions>

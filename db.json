@@ -1,42 +1,26 @@
 {
   "time-tracking": [
     {
-      "date": "2022-02-14",
-      "fromTime": "06:15",
-      "toTime": "16:15",
-      "userId": "500459",
+      "date": "2022-02-01",
+      "fromTime": "02:28",
+      "toTime": "15:28",
       "type": "REGULAR_WORK",
-      "id": 6
-    },
-    {
-      "date": "2022-1-31",
-      "fromTime": "08:00",
-      "toTime": "16:12",
       "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 7
-    },
-    {
-      "date": "2022-01-31",
-      "fromTime": "08:00",
-      "toTime": "16:12",
-      "userId": "420",
-      "type": "REGULAR_WORK",
-      "id": 8
+      "id": 1
     }
   ],
   "users": [
     {
       "id": "500459",
-      "firstName": "1st Nejm",
-      "lastName": "Sir. Nejm",
+      "firstName": "Employee",
+      "lastName": "von Firma",
       "token": "password",
       "access": "EMPLOYEE"
     },
     {
       "id": "420",
-      "firstName": "2st Nejm",
-      "lastName": "Sir. Nejm",
+      "firstName": "Admin",
+      "lastName": "von User",
       "token": "password",
       "access": "ADMIN"
     }

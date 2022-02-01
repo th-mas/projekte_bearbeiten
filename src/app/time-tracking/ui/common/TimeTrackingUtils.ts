@@ -26,7 +26,7 @@ export const padToString = (val?: number): string => {
   return '';
 }
 
-export const toHoursAndMinutes = (val: string | undefined): { hrs: number, min: number } | undefined  => {
+export const toHoursAndMinutes = (val: string | undefined): { hrs: number, min: number } | undefined => {
   if (val) {
     const hhmm: string[] = val.split(":");
     let hrs = Number.parseInt(hhmm[0]);
@@ -36,13 +36,13 @@ export const toHoursAndMinutes = (val: string | undefined): { hrs: number, min: 
   return undefined;
 }
 
-export const updateDurationInfo = (fromTime: string, toTime:string): string => {
+export const updateDurationInfo = (fromTime: string, toTime: string): string => {
   let durationStr = '';
   if (fromTime && toTime) {
     const from = getAsTime(fromTime);
     const to = getAsTime(toTime);
     let duration = to.getTime() - from.getTime();
-    let minutes  = (duration / 1000) / 60;
+    let minutes = (duration / 1000) / 60;
     let hours = (minutes - (minutes % 60)) / 60;
     const hadPause = hours >= 6
     if (hadPause) {
@@ -50,20 +50,27 @@ export const updateDurationInfo = (fromTime: string, toTime:string): string => {
     }
     hours = (minutes - (minutes % 60)) / 60;
     minutes = minutes - (minutes - (minutes % 60));
-    durationStr = `${hours}:${minutes}${hadPause ? ' [ -30 minutes pause ]' : ''}`;
+    durationStr = `${hours} hour(s) and ${minutes} minute(s)${hadPause ? ' [ -30 minutes pause ]' : ''}`;
   }
   return durationStr;
 }
 
-export const dateRepToStr = (date: DateRepresentation) : string => {
+export const dateRepToStr = (date: DateRepresentation): string => {
   return `${date.year}-${padToString(date.month)}-${padToString(date.day)}`;
 }
 
+export const dateToDateRep = (date: Date): DateRepresentation => {
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate()
+  }
+}
 
 
-export const strToDateRep = (strDate: string) : DateRepresentation => {
+export const strToDateRep = (strDate: string): DateRepresentation => {
   if (strDate) {
-    const parts= strDate.split('-');
+    const parts = strDate.split('-');
     return {
       year: Number.parseInt(parts[0]),
       month: Number.parseInt(parts[1]),
@@ -71,4 +78,11 @@ export const strToDateRep = (strDate: string) : DateRepresentation => {
     };
   }
   return {};
+}
+
+export const getDateString = (): string => {
+  const now = new Date();
+  const offset = now.getTimezoneOffset();
+  const isoStr = new Date(now.getTime() - offset * 60000).toISOString();
+  return isoStr.substring(0, isoStr.indexOf('T'));
 }

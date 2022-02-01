@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {TimeTrackingService} from "../../data-access/time-tracking.service";
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
 import {getUserId} from "../../../common/UserContext";
-import {strToDateRep} from "../common/TimeTrackingUtils";
+import {dateToDateRep, getDateString, strToDateRep} from "../common/TimeTrackingUtils";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {TimeTrackingEditDialog} from "../dialog/time-tracking-edit-dialog/time-tracking-edit-dialog.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -12,61 +15,71 @@ import {strToDateRep} from "../common/TimeTrackingUtils";
 })
 export class TimeTrackingComponent implements OnInit {
 
+  searchDate = getDateString();
+  selected: TimeTrackingRecord;
   tracking: TimeTrackingRecord[] = [];
-  date: { year?: number, month?: number; day?: number };
-  fromTime: string;
-  toTime: string;
-  type = TrackingType.REGULAR_WORK;
-  enumType = TrackingType;
-  breakpoint = 2;
 
-  searchDate: any;
-
-  constructor(private service: TimeTrackingService) {
-    const now = new Date();
-    this.date = {
-      year: now.getFullYear(),
-      month: now.getMonth() + 1,
-      day: now.getDate()
+  constructor(private service: TimeTrackingService, private dialog: MatDialog, private _snackBar: MatSnackBar) {
+    this.selected = {
+      date: dateToDateRep(new Date()), fromTime: "", toTime: "", type: TrackingType.VACATION, userId: getUserId()
     }
-    // Standard starting time
-    this.fromTime = "08:00";
-    // Standard end time for 7:42 days
-    this.toTime = "16:12";
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   ngOnInit(): void {
-    this.breakpoint = (window.innerWidth <= 400) ? 1 : 6;
     this.service.loadByMonth().subscribe({
       next: (data: any) =>
-        Array.isArray(data) ? this.tracking = data.map((r: any) => {return {...r, date: strToDateRep(r.date)}}) : [{...data, date: strToDateRep(data.date)}]
+        Array.isArray(data) ? this.tracking = data.map((r: any) => {
+          return {...r, date: strToDateRep(r.date)}
+        }) : [{...data, date: strToDateRep(data.date)}]
 
-    })
-  }
-
-  save(): void {
-    console.log("saving...");
-    this.service.creatRecord({
-      date: this.date, fromTime: this.fromTime, toTime: this.toTime, userId: getUserId(), type: this.type
-    }).subscribe({
-      next: (response) => console.log("Next response: ", response)
-      , error: (response) => console.log("Error", response)
     });
-  }
-
-  onResize(event: any) {
-    console.log(event, typeof event);
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 6;
   }
 
   searchByDate(): void {
     if (this.searchDate) {
       let parts = this.searchDate.split('-');
       this.service.findRecordsByDate(strToDateRep(this.searchDate)).subscribe({
-        next: (r) => console.log(r),
+        next: (r) => {
+          this.tracking = Array.isArray(r) ? r.map<TimeTrackingRecord>((e: any) => {
+            return {...e, date: strToDateRep(e.date)}
+          }) : [];
+          if (Array.isArray(r) && r.length === 0) {
+            this._snackBar.open(`No tracking entries found for day: [${this.searchDate}]`, 'No Date!');
+          }
+        },
         error: (e) => console.log(e)
       })
     }
   }
 
+  select(record: TimeTrackingRecord): void {
+    this.selected = record;
+  }
+
+  createRecord(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(TimeTrackingEditDialog, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((result: TimeTrackingRecord | string) => {
+      if (result === 'GO_REGISTER_YOURSELF') {
+        this._snackBar.open('Tracking record not created.', 'Cancelled');
+      } else {
+        this.service.creatRecord(result as TimeTrackingRecord).subscribe({
+          next: (response) => {
+            this._snackBar.open(`Tracking record created!`, 'Created!');
+            this.searchByDate();
+          },
+          error: (e) => this._snackBar.open(`Error happened!`, 'Error!')
+        })
+      }
+    });
+  }
 }

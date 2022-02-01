@@ -1,3 +1,4 @@
+<div style="width: 330px; margin: 20px;">
 <mat-card>
   <mat-card-title>{{record.date | dateStr}}</mat-card-title>
   <mat-card-content>
@@ -6,6 +7,12 @@
     {{record.type | enumStr}}
   </mat-card-content>
   <mat-card-actions>
-    <button class="btn btn-primary" routerLink="{{'/time-tracking/info/'+record.id}}">Details</button>
+    <button style="margin-left: 5px;" mat-stroked-button color="primary" *ngIf="showButton"
+            routerLink="{{'/time-tracking/info/'+record.id}}">Details
+    </button>
+    <button style="margin-left: 5px;" mat-stroked-button color="primary" *ngIf="selectButton" (click)="select()">
+      Select
+    </button>
   </mat-card-actions>
 </mat-card>
+</div>

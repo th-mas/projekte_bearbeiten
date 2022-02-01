@@ -1,18 +1,59 @@
-<div>
-  <div>
-    <label>Date:</label>
-    <input disabled type="date" [(ngModel)]="info.date">
+<div class="flex-parent">
+  <div class="flex-item">&nbsp;</div>
+  <div clas="flex-item">
+
+    <div class="form-group" class="my-3" style="width: 200px;">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput type="date" [ngModel]="date | async"  (ngModelChange)="updateValue($event, 'date')"  style="width: 180px">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+
+    </div>
+    <div class="form-group" class="my-3" style="width: 200px;">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Start time</mat-label>
+          <input matInput type="time" [ngModel]="fromTime | async" (ngModelChange)="updateValue($event, 'fromTime')" style="width: 180px">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="form-group" class="my-3" style="width: 200px;">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>End time</mat-label>
+          <input matInput type="time" [ngModel]="toTime| async" (ngModelChange)="updateValue($event, 'toTime') "style="width: 180px">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+
+    <div class="form-group" class="my-3" style="width: 380px;">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Time total</mat-label>
+          <input matInput disabled type="text" [ngModel]="duration" style="width: 380px">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Time spend working or vacating on that day.</mat-hint>
+        </mat-form-field>
+      </p>
+    </div>
+
+    <div class="form-group" class="my-3" style="width: 380px;">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Owner</mat-label>
+          <input matInput disabled type="text" [ngModel]="userInfo | async" style="width: 380px">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+    <button mat-stroked-button color="accent" (click)="deleteEntry()">Delete</button>
+    <button style="margin-left: 10px" mat-stroked-button color="primary" (click)="updateEntry()">Update</button>
   </div>
-  <div>
-    <label>From time:</label>
-    <input disabled type="time" [(ngModel)]="info.fromTime">
-  </div>
-  <div>
-    <label>To time:</label>
-    <input disabled type="time" [(ngModel)]="info.toTime">
-  </div>
-  <div>
-    <label>Booked time:</label>
-    <input disabled [ngModel]="duration">
-  </div>
+  <div class="flex-item">&nbsp;</div>
+
 </div>

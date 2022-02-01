@@ -1,11 +1,31 @@
 <div>
-  <label for="from">From: </label>
-  <input class="custom-select my-1 mr-sm-2" id="from"
-         type="time" [(ngModel)]="fromTime"
-         (ngModelChange)="onFromChange($event)"> -
-  <label for="to">To: </label>
-  <input id="to" type="time"
-         [(ngModel)]="toTime"
-         (ngModelChange)="onToChange($event)">
-  <label>Duration: {{this.duration}}</label>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>
+        From
+      </mat-label>
+      <input matInput placeholder="HH:MM" id="from"
+             type="time" [(ngModel)]="fromTime"
+             (ngModelChange)="onFromChange($event)">
+
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Time tracking start time.</mat-hint>
+    </mat-form-field>
+  </p>
+  -
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>To</mat-label>
+      <input matInput id="to" type="time"
+             [(ngModel)]="toTime"
+             (ngModelChange)="onToChange($event)">
+
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Time tracking end time.</mat-hint>
+    </mat-form-field>
+  </p>
+  <br>
+  <label for="duration">
+    <pre id="duration">{{duration}}</pre>
+  </label>
 </div>

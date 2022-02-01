@@ -44,8 +44,7 @@ export class DefaultTimeTrackingService implements TimeTrackingService {
   }
 
 
-
-  findRecord(id: number): Observable<TimeTrackingRecord | TimeTracingServiceError> {
+  findRecord(id: number): Observable<TimeTrackingRecord[] | TimeTracingServiceError> {
     const params = new HttpParams().set('id', id);
     const headers = new HttpHeaders()
       .set('Accept', 'application/json');
@@ -54,21 +53,38 @@ export class DefaultTimeTrackingService implements TimeTrackingService {
     return this.http.get(this.timeTrackingPath(), {params, headers});
   }
 
-  removeRecord(record: TimeTrackingRecord): Observable<TimeTrackingRecord | TimeTracingServiceError> {
-    return of({
-      errorMessage: 'Server not implemented!'
-    });
+  removeRecord(id: number): Observable<unknown> {
+    if (id) {
+      const headers = new HttpHeaders()
+        .set('Accept', 'application/json');
+      return this.http.delete(this.timeTrackingPath(`${id}`), {headers});
+    } else {
+      return of({
+        errorId: 'ER404',
+        errorMessage: 'Record id is not defined. Can not delete record.'
+      })
+    }
   }
 
   updateRecord(record: TimeTrackingRecord): Observable<TimeTrackingRecord | TimeTracingServiceError> {
-    return of({
-      errorMessage: 'Server not implemented!'
-    });
+    if (record.id) {
+      const headers = new HttpHeaders()
+        .set('Accept', 'application/json');
+      return this.http.put(this.timeTrackingPath(`${record.id}`), {
+        ...record,
+        date: dateRepToStr(record.date)
+      }, {headers});
+    } else {
+      return of({
+        errorId: 'ER404',
+        errorMessage: 'Record id is not defined. Can not update record.'
+      })
+    }
   }
 
 
-  private timeTrackingPath(): string {
-    return environment.apiUrl + '/time-tracking';
+  private timeTrackingPath(val?: string): string {
+    return environment.apiUrl + '/time-tracking' + (val ? `/${val}` : '');
   }
 
 }

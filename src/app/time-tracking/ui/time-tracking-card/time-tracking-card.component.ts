@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
 import {updateDurationInfo} from "../common/TimeTrackingUtils";
 
@@ -8,15 +8,17 @@ import {updateDurationInfo} from "../common/TimeTrackingUtils";
   styleUrls: ['./time-tracking-card.component.scss']
 })
 export class TimeTrackingCardComponent implements OnInit {
-
   duration: string = '';
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     const {fromTime, toTime} = this.record;
     this.duration = updateDurationInfo(fromTime, toTime);
   }
 
+  @Output() selected = new EventEmitter<TimeTrackingRecord>();
   @Input() record: TimeTrackingRecord = {
     toTime: '',
     fromTime: '',
@@ -24,4 +26,10 @@ export class TimeTrackingCardComponent implements OnInit {
     userId: '',
     type: TrackingType.VACATION
   };
+  @Input() showButton: boolean = true;
+  @Input() selectButton = true;
+
+  select() {
+    this.selected.emit(this.record);
+  }
 }
