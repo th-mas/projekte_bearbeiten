@@ -1,16 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
-import {TimeTrackingRecord, TrackingType} from "../../../data-access/entities/TimeTrackingRecord";
-import {DateRepresentation} from "../../../data-access/entities/DateRepresentation";
+import {TrackingType} from "../../../data-access/entities/TimeTrackingRecord";
 import {getUserId} from "../../../../common/UserContext";
-import {dateToDateRep, getDateString, padToString, strToDateRep} from "../../common/TimeTrackingUtils";
+import {dateAsString, padToString} from "../../common/TimeTrackingUtils";
 
 @Component({
   templateUrl: './time-tracking-edit-dialog.component.html',
   styleUrls: ['./time-tracking-edit-dialog.component.scss']
 })
 export class TimeTrackingEditDialog implements OnInit {
-  date: string = getDateString();
+  date: string = dateAsString();
   fromTime: string = this.initFromTime();
   toTime: string = this.initFromTime(8);
   type = TrackingType.REGULAR_WORK;
@@ -21,7 +20,7 @@ export class TimeTrackingEditDialog implements OnInit {
 
   createRecord(): void {
     this.ref.close({
-      date: strToDateRep(this.date),
+      date: this.date,
       fromTime: this.fromTime,
       toTime: this.toTime,
       type: this.type,

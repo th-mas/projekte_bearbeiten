@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TimeTrackingService} from "../../data-access/time-tracking.service";
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
 import {of} from "rxjs";
-import {dateRepToStr, dateToDateRep, strToDateRep, updateDurationInfo} from "../common/TimeTrackingUtils";
+import {dateAsString, updateDurationInfo} from "../common/TimeTrackingUtils";
 import {getUserInfo} from "../../../common/UserContext";
 
 type TTProps = keyof TimeTrackingRecord;
@@ -22,7 +22,14 @@ export class TimeTrackingInfoComponent implements OnInit {
   type = of(TrackingType.PAUSE);
   userId = of('');
   userInfo = of(getUserInfo())
-  values: TimeTrackingRecord = {date: dateToDateRep(new Date()), fromTime: "", toTime: "", type: TrackingType.REGULAR_WORK, userId: ""};
+  enumType = TrackingType;
+  values: TimeTrackingRecord = {
+    date: dateAsString(),
+    fromTime: "",
+    toTime: "",
+    type: TrackingType.REGULAR_WORK,
+    userId: ""
+  };
 
   constructor(private route: ActivatedRoute, private service: TimeTrackingService, private router: Router) {
     this.route.paramMap.subscribe(
@@ -49,24 +56,24 @@ export class TimeTrackingInfoComponent implements OnInit {
 
   deleteEntry(): void {
     this.service.removeRecord(this.id).subscribe({
-      next: (r) => this.router.navigate(["/time-tracking/search"])
+      next: (r) => this.goBack()
     })
   }
 
   updateEntry(): void {
-    const request = this.values as any;
-    request.date = strToDateRep(request.date);
-    this.service.updateRecord({...request} as TimeTrackingRecord).subscribe({
-      next: (r) => this.router.navigate(["/time-tracking/search"])
+    this.service.updateRecord(this.values).subscribe({
+      next: (r) => this.goBack()
     })
   }
 
-
+  goBack(): void {
+    this.router.navigate(["/time-tracking/search"]);
+  }
 
   updateValue<T>(val: T, field: TTProps): void {
-    const tmp = this.values as {[key: string]: any}
+    const tmp = this.values as { [key: string]: any }
     tmp[field] = val;
-    this.values = { ...tmp} as TimeTrackingRecord;
+    this.values = {...tmp} as TimeTrackingRecord;
   }
 
 }

@@ -9,7 +9,6 @@ import {HttpClientModule} from "@angular/common/http";
 import { EnumToArrayPipe } from './pipe/enum-to-array.pipe';
 import { TimeTrackingInfoComponent } from './ui/time-tracking-info/time-tracking-info.component';
 import { EnumStrPipe } from './pipe/enum-str.pipe';
-import { DateStrPipe } from './pipe/date-str.pipe';
 import {AngularMaterialModule} from "../angular-material.module";
 import {TimeTrackingCardComponent} from "./ui/time-tracking-card/time-tracking-card.component";
 import { TimeTrackingEditDialog } from './ui/dialog/time-tracking-edit-dialog/time-tracking-edit-dialog.component';
@@ -23,7 +22,6 @@ import { TimeTrackingEditDialog } from './ui/dialog/time-tracking-edit-dialog/ti
     TimeTrackingInfoComponent,
     TimeTrackingCardComponent,
     EnumStrPipe,
-    DateStrPipe,
     TimeTrackingEditDialog
   ],
   imports: [

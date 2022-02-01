@@ -3,11 +3,8 @@ import {TimeTrackingService} from "./time-tracking.service";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {TimeTrackingRecord} from "./entities/TimeTrackingRecord";
 import {Observable, of} from "rxjs";
-import {ErrorObservable} from "rxjs-compat/observable/ErrorObservable";
 import {TimeTracingServiceError} from "./entities/TimeTracingServiceError";
 import {environment} from "../../../environments/environment";
-import {dateRepToStr, padToString} from "../ui/common/TimeTrackingUtils";
-import {DateRepresentation} from "./entities/DateRepresentation";
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +27,11 @@ export class DefaultTimeTrackingService implements TimeTrackingService {
     const headers = new HttpHeaders()
       .set('Accept', 'application/json');
 
-    return this.http.post(this.timeTrackingPath(), {
-      ...record,
-      date: dateRepToStr(record.date)
-    }, {headers});
+    return this.http.post(this.timeTrackingPath(), record, {headers});
   }
 
-  findRecordsByDate(date: DateRepresentation): Observable<TimeTrackingRecord[] | TimeTracingServiceError> {
-    const params = new HttpParams().set('date', dateRepToStr(date));
+  findRecordsByDate(date: string): Observable<TimeTrackingRecord[] | TimeTracingServiceError> {
+    const params = new HttpParams().set('date', date);
     const headers = new HttpHeaders()
       .set('Accept', 'application/json');
     return this.http.get(this.timeTrackingPath(), {params, headers});
@@ -70,10 +64,7 @@ export class DefaultTimeTrackingService implements TimeTrackingService {
     if (record.id) {
       const headers = new HttpHeaders()
         .set('Accept', 'application/json');
-      return this.http.put(this.timeTrackingPath(`${record.id}`), {
-        ...record,
-        date: dateRepToStr(record.date)
-      }, {headers});
+      return this.http.put(this.timeTrackingPath(`${record.id}`), record, {headers});
     } else {
       return of({
         errorId: 'ER404',
@@ -82,9 +73,7 @@ export class DefaultTimeTrackingService implements TimeTrackingService {
     }
   }
 
-
   private timeTrackingPath(val?: string): string {
     return environment.apiUrl + '/time-tracking' + (val ? `/${val}` : '');
   }
-
 }

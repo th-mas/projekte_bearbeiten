@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IdentifyComponent } from './identify-component/identify.component';
 import {IdentifyComponentDialog} from './dialog/identify/identify-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IdentifyGuard} from "./identify-guard.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -21,7 +21,8 @@ import {AdminGuard} from "./admin-guard.service";
     MatDialogModule,
     CommonModule,
     FormsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    ReactiveFormsModule
   ],
   exports:[
     IdentifyComponent

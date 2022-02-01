@@ -22,7 +22,7 @@ export class TimeTrackingCardComponent implements OnInit {
   @Input() record: TimeTrackingRecord = {
     toTime: '',
     fromTime: '',
-    date: {},
+    date: '',
     userId: '',
     type: TrackingType.VACATION
   };

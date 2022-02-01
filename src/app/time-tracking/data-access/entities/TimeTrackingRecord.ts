@@ -1,5 +1,3 @@
-import {DateRepresentation} from "./DateRepresentation";
-
 export enum TrackingType {
   REGULAR_WORK= 'REGULAR_WORK',
   PAUSE = 'PAUSE',
@@ -8,7 +6,7 @@ export enum TrackingType {
 
 export interface TimeTrackingRecord {
   id?:number;
-  date: DateRepresentation;
+  date: string;
   fromTime: string;
   toTime:string;
   userId: string;

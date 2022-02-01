@@ -1,4 +1,3 @@
-import {DateRepresentation} from "../../data-access/entities/DateRepresentation";
 
 export const getAsTime = (val: string): Date => {
   const now = new Date();
@@ -55,32 +54,7 @@ export const updateDurationInfo = (fromTime: string, toTime: string): string => 
   return durationStr;
 }
 
-export const dateRepToStr = (date: DateRepresentation): string => {
-  return `${date.year}-${padToString(date.month)}-${padToString(date.day)}`;
-}
-
-export const dateToDateRep = (date: Date): DateRepresentation => {
-  return {
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate()
-  }
-}
-
-
-export const strToDateRep = (strDate: string): DateRepresentation => {
-  if (strDate) {
-    const parts = strDate.split('-');
-    return {
-      year: Number.parseInt(parts[0]),
-      month: Number.parseInt(parts[1]),
-      day: Number.parseInt(parts[2])
-    };
-  }
-  return {};
-}
-
-export const getDateString = (): string => {
+export const dateAsString = (): string => {
   const now = new Date();
   const offset = now.getTimezoneOffset();
   const isoStr = new Date(now.getTime() - offset * 60000).toISOString();

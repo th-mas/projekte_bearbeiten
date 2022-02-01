@@ -15,11 +15,11 @@
           </mat-form-field>
         </p>
 
-        <app-time-range-picker [fromTime]="fromTime" [toTime]="toTime"></app-time-range-picker>
+        <app-time-range-picker [fromTime]="fromTime" [toTime]="toTime" (toChanged)="toTime=$event" (fromChanged)="fromTime=$event"></app-time-range-picker>
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Tracking type</mat-label>
-            <mat-select disableRipple [value]="type">
+            <mat-select disableRipple [value]="type" [ngModel]="type" (ngModelChange)="type=$event">
               <mat-option *ngFor="let opt of enumType | enumToArray"
                           [value]="opt"
               [attr.selected]="opt === type ? 'selected' : null">

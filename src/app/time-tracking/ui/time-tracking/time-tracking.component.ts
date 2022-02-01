@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TimeTrackingService} from "../../data-access/time-tracking.service";
 import {TimeTrackingRecord, TrackingType} from "../../data-access/entities/TimeTrackingRecord";
 import {getUserId} from "../../../common/UserContext";
-import {dateToDateRep, getDateString, strToDateRep} from "../common/TimeTrackingUtils";
+import {dateAsString} from "../common/TimeTrackingUtils";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TimeTrackingEditDialog} from "../dialog/time-tracking-edit-dialog/time-tracking-edit-dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -15,13 +15,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TimeTrackingComponent implements OnInit {
 
-  searchDate = getDateString();
+  searchDate = dateAsString();
   selected: TimeTrackingRecord;
   tracking: TimeTrackingRecord[] = [];
 
   constructor(private service: TimeTrackingService, private dialog: MatDialog, private _snackBar: MatSnackBar) {
     this.selected = {
-      date: dateToDateRep(new Date()), fromTime: "", toTime: "", type: TrackingType.VACATION, userId: getUserId()
+      date: dateAsString(), fromTime: "", toTime: "", type: TrackingType.VACATION, userId: getUserId()
     }
   }
 
@@ -31,22 +31,17 @@ export class TimeTrackingComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.loadByMonth().subscribe({
-      next: (data: any) =>
-        Array.isArray(data) ? this.tracking = data.map((r: any) => {
-          return {...r, date: strToDateRep(r.date)}
-        }) : [{...data, date: strToDateRep(data.date)}]
-
+      next: (data) =>
+        this.tracking = data
     });
   }
 
   searchByDate(): void {
     if (this.searchDate) {
       let parts = this.searchDate.split('-');
-      this.service.findRecordsByDate(strToDateRep(this.searchDate)).subscribe({
+      this.service.findRecordsByDate(this.searchDate).subscribe({
         next: (r) => {
-          this.tracking = Array.isArray(r) ? r.map<TimeTrackingRecord>((e: any) => {
-            return {...e, date: strToDateRep(e.date)}
-          }) : [];
+          this.tracking = <TimeTrackingRecord[]>r;
           if (Array.isArray(r) && r.length === 0) {
             this._snackBar.open(`No tracking entries found for day: [${this.searchDate}]`, 'No Date!');
           }
