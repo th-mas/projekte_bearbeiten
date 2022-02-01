@@ -12,10 +12,11 @@ export class HeaderComponent implements OnInit {
   userId = '';
 
   constructor(private router: Router) {
+    this.userId = getUserInfo();
   }
 
   ngOnInit(): void {
-    this.userId = getUserInfo();
+
   }
 
   logout(): void {
