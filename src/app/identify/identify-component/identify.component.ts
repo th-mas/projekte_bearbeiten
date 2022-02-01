@@ -17,6 +17,8 @@ export class IdentifyComponent implements OnInit {
   constructor(public dialog: MatDialog, private service: IdentifyService, private router: Router) {
   }
 
+  welcomMessage = '';
+
   ngOnInit(): void {
     this.verifyUser();
   }
@@ -45,6 +47,11 @@ export class IdentifyComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'GO_REGISTER_YOURSELF') {
         this.goRegisterYourself();
+      } else if (!result) {
+        this.welcomMessage = "Don't want to! Go google it";
+        setTimeout(() => {
+          window.location.href = 'http://google.com';
+        }, 1000)
       } else {
         this.service.loginUser(result).subscribe({
           next: (response) => response && result.token === response.token ? this.goHome(response) : this.verifyUser(),
