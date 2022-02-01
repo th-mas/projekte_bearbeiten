@@ -2,13 +2,13 @@
 
 
 ##Aufteilung:
-####Thomas Haselwander
+###Thomas Haselwander
 * Projekte
 
-####Sandrino Becirbegovic
+###Sandrino Becirbegovic
 * Groups
 
-#### Selvedin Catakovic
+### Selvedin Catakovic
 * Time-tracking
 
 ## Development server
