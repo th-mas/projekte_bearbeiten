@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {getUserInfo, logout} from "../common/UserContext";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-header',

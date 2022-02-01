@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -21,8 +21,16 @@
         <li>
           <a class="nav-link" href="group">Groups</a>
         </li>
+        <li>
+          <button mat-icon-button matTooltip="{{userId}}" color="primary">
+            <i class="material-icons">person</i>
+
+          </button>
+          <button mat-icon-button matTooltip="Logout" color="accent" (click)="logout()"><i
+            class="material-icons">logout</i></button>
+        </li>
       </ul>
-      <button (click)="logout()" >{{userId}}</button>
+
     </div>
   </div>
 </nav>

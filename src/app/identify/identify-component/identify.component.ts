@@ -15,7 +15,6 @@ export class IdentifyComponent implements OnInit {
   private retry = 0;
 
   constructor(public dialog: MatDialog, private service: IdentifyService, private router: Router) {
-
   }
 
   ngOnInit(): void {

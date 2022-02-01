@@ -64,7 +64,7 @@ export class TimeTrackingComponent implements OnInit {
     const dialogRef = this.dialog.open(TimeTrackingEditDialog, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result: TimeTrackingRecord | string) => {
-      if (result === 'GO_REGISTER_YOURSELF') {
+      if (result === 'GO_REGISTER_YOURSELF' || !result) {
         this._snackBar.open('Tracking record not created.', 'Cancelled');
       } else {
         this.service.creatRecord(result as TimeTrackingRecord).subscribe({

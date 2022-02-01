@@ -7,7 +7,7 @@
         <mat-form-field appearance="outline" required>
           <mat-label>Date</mat-label>
           <input matInput type="date" [ngModel]="date | async"  (ngModelChange)="updateValue($event, 'date')"  style="width: 180px">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-icon *ngIf="type" color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
 
@@ -17,7 +17,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Start time</mat-label>
           <input matInput type="time" [ngModel]="fromTime | async" (ngModelChange)="updateValue($event, 'fromTime')" style="width: 180px" required>
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-icon *ngIf="type" color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
     </div>
@@ -26,7 +26,7 @@
         <mat-form-field appearance="outline">
           <mat-label>End time</mat-label>
           <input matInput type="time" [ngModel]="toTime| async" (ngModelChange)="updateValue($event, 'toTime')" style="width: 180px" required>
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-icon *ngIf="type" color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
     </div>
