@@ -1,11 +1,11 @@
 # ArbeitszeitApp
 
 
-##Aufteilung:
-###Thomas Haselwander
+## Aufteilung:
+### Thomas Haselwander
 * Projekte
 
-###Sandrino Becirbegovic
+### Sandrino Becirbegovic
 * Groups
 
 ### Selvedin Catakovic
