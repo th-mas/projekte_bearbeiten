@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {getUserInfo, logout} from "../common/UserContext";
+import {getUserInfo, isAdmin, isLogged, logout} from "../common/UserContext";
 import {of} from "rxjs";
 
 @Component({
@@ -21,6 +21,14 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     logout();
     this.router.navigate(['/']);
+  }
+
+  isAdmin(): boolean {
+    return isAdmin();
+  }
+
+  isLogged(): boolean {
+    return isLogged();
   }
 
 }
