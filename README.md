@@ -1,5 +1,16 @@
 # ArbeitszeitApp
 
+
+##Aufteilung:
+####Thomas Haselwander
+* Projekte
+
+####Sandrino Becirbegovic
+* Groups
+
+#### Selvedin Catakovic
+* Time-tracking
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
