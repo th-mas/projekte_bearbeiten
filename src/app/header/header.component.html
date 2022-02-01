@@ -24,7 +24,7 @@
       </ul>
     </div>
     <div class="navbar-right">
-      <button mat-icon-button matTooltip="{{userId}}" color="primary">
+      <button *ngIf="isLogged()" mat-icon-button matTooltip="{{userId}}" color="primary">
         <i class="material-icons">person</i>
 
       </button>
